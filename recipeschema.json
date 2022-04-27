@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Recipe Schema",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+            "maxLength": 50
+          },
+         
+          "PrepTime": {
+            "description": "The preparation time in minutes",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "CookTime": {
+            "description": "The cooking time in minutes",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "servings": {
+            "description": "The number of person the recipe can feed",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "required": ["name", "PrepTime","CookTime", "servings"],
+
+          "Ingredients" : {
+            "type": "array",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["kg", "g", "l", "ml", "tsp", "tbsp", "cm", "drop", "pinch"]
+              },
+              "amount": {
+                "type": "integer",
+                "minimum": 0,
+                "exclusiveMinimum": true
+              }
+            },
+            "additionalProperties": false,
+            "required": ["name", "amount"]
+          },
+
+          
+        "method" : {
+          "type": "array",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 50
+            }
+
+        }
+        
+      },
+      "nutritions" : {
+        "type": "array",
+        "properties": {
+          "name": {
+            "type": "integer",
+            "maxLength": 50
+          }
+
+      }
+      
+    },
+          "additionalProperties": false,
+          "required": ["description"]
+        }
+      
+}
